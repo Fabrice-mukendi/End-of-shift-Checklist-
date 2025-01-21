@@ -61,6 +61,15 @@
             width: 100%;
             box-sizing: border-box;
         }
+        select[data-status="Good"] {
+            background-color: #00c853; /* Hard Green */
+        }
+        select[data-status="Not Good"] {
+            background-color: #d50000; /* Hard Red */
+        }
+        select[data-status="Other"] {
+            background-color: #ffd600; /* Hard Yellow */
+        }
         .hidden {
             display: none;
         }
@@ -118,123 +127,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Name of Person Completing Form</td>
-                        <td colspan="2"><input type="text" name="person_name" placeholder="Enter your name" required></td>
-                    </tr>
-                    <tr>
-                        <td>Department/Area</td>
-                        <td colspan="2"><input type="text" name="department" placeholder="Enter department/area" required></td>
-                    </tr>
-                    <tr>
-                        <td>Overall cleanliness of the Box Room</td>
-                        <td>
-                            <select name="cleanliness" required>
-                                <option value="">-- Select --</option>
-                                <option value="Good">Good</option>
-                                <option value="Not Good">Not Good</option>
-                            </select>
-                        </td>
-                        <td><input type="text" name="cleanliness_remarks" placeholder="Add remarks"></td>
-                    </tr>
-                    <tr>
-                        <td>Is the floor properly covered with clean cardboard?</td>
-                        <td>
-                            <select name="floor_covering" required>
-                                <option value="">-- Select --</option>
-                                <option value="Yes">Yes</option>
-                                <option value="No">No</option>
-                            </select>
-                        </td>
-                        <td><input type="text" name="floor_covering_remarks" placeholder="Add remarks"></td>
-                    </tr>
-                    <tr>
-                        <td>Weekly Safety Topic Available?</td>
-                        <td>
-                            <select name="safety_topic" required>
-                                <option value="">-- Select --</option>
-                                <option value="Yes">Yes</option>
-                                <option value="No">No</option>
-                            </select>
-                        </td>
-                        <td><input type="text" name="safety_topic_remarks" placeholder="Add remarks"></td>
-                    </tr>
-                    <tr>
-                        <td>Do we have chemicals?</td>
-                        <td>
-                            <select name="chemicals" onchange="toggleChecklist(this, 'chemicalsChecklist', 'Yes')" required>
-                                <option value="">-- Select --</option>
-                                <option value="Yes">Yes</option>
-                                <option value="No">No</option>
-                            </select>
-                        </td>
-                        <td></td>
-                    </tr>
-                    <tr id="chemicalsChecklist" class="hidden">
-                        <td>Specify Chemicals</td>
-                        <td colspan="2">
-                            <label><input type="checkbox" name="chemical_707"> 707</label>
-                            <label><input type="checkbox" name="chemical_knocker_loose"> Knocker Loose</label>
-                            <label><input type="checkbox" name="chemical_air_lubricant"> Air Lubricant Oil</label>
-                            <label><input type="checkbox" name="chemical_other"> Other</label>
-                            <input type="text" name="chemical_other_details" placeholder="Specify other chemical">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Is the baler working properly?</td>
-                        <td>
-                            <select name="baler" required>
-                                <option value="">-- Select --</option>
-                                <option value="Yes">Yes</option>
-                                <option value="No">No</option>
-                            </select>
-                        </td>
-                        <td><input type="text" name="baler_remarks" placeholder="Add remarks"></td>
-                    </tr>
-                    <tr>
-                        <td>Are all box machines in good condition?</td>
-                        <td>
-                            <select name="box_machines" required>
-                                <option value="">-- Select --</option>
-                                <option value="Yes">Yes</option>
-                                <option value="No">No</option>
-                            </select>
-                        </td>
-                        <td><input type="text" name="box_machine_remarks" placeholder="Add remarks"></td>
-                    </tr>
-                    <tr>
-                        <td>Are the glue tanks properly filled up?</td>
-                        <td>
-                            <select name="glue_tanks" required>
-                                <option value="">-- Select --</option>
-                                <option value="Yes">Yes</option>
-                                <option value="No">No</option>
-                            </select>
-                        </td>
-                        <td><input type="text" name="glue_tank_remarks" placeholder="Add remarks"></td>
-                    </tr>
-                    <tr>
-                        <td>Is the conveyor working fine?</td>
-                        <td>
-                            <select name="conveyor" required>
-                                <option value="">-- Select --</option>
-                                <option value="Yes">Yes</option>
-                                <option value="No">No</option>
-                            </select>
-                        </td>
-                        <td><input type="text" name="conveyor_remarks" placeholder="Add remarks"></td>
-                    </tr>
-                    <tr>
-                        <td>Are all lines in good condition?</td>
-                        <td>
-                            <select name="lines" required>
-                                <option value="">-- Select --</option>
-                                <option value="Yes">Yes</option>
-                                <option value="No">No</option>
-                            </select>
-                        </td>
-                        <td><input type="text" name="lines_remarks" placeholder="Add remarks"></td>
-                    </tr>
+                    <!-- Include all questions from the Startup Checklist -->
                     <tr>
                         <td>Upload Supporting Pictures</td>
                         <td colspan="2"><input type="file" name="supporting_pictures" multiple></td>
