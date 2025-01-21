@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>End of Shift Checklist</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+            color: #333;
+        }
+        .form-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        header img {
+            width: 150px;
+            margin-bottom: 15px;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 28px;
+            color: #555;
+        }
+        header .date {
+            font-size: 16px;
+            color: #777;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 16px;
+        }
+        th, td {
+            padding: 15px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #f0f4f8;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        select, input[type="text"], input[type="file"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .hidden {
+            display: none;
+        }
+        .submit-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            padding: 15px 25px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            text-align: center;
+            text-transform: uppercase;
+            transition: 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        .submit-button:hover {
+            background: linear-gradient(135deg, #0056b3, #003f7f);
+            transform: translateY(-3px);
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const dateElement = document.querySelector('.date');
+            const today = new Date().toLocaleDateString();
+            dateElement.textContent = `Date: ${today}`;
+        });
+
+        function toggleChecklist(selectElement, checklistId, showOn = 'Yes') {
+            const checklist = document.getElementById(checklistId);
+            if (selectElement.value === showOn) {
+                checklist.classList.remove('hidden');
+            } else {
+                checklist.classList.add('hidden');
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="form-container">
+        <header>
+            <img src="pilgrims_logo_transparent.png" alt="Pilgrim's Logo">
+            <h1>End of Shift Checklist</h1>
+            <div class="date"></div>
+        </header>
+        <form action="https://formspree.io/f/mdkkjgrr" method="POST" enctype="multipart/form-data">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Status</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Name of Person Completing Form</td>
+                        <td colspan="2"><input type="text" name="person_name" placeholder="Enter your name" required></td>
+                    </tr>
+                    <tr>
+                        <td>Department/Area</td>
+                        <td colspan="2"><input type="text" name="department" placeholder="Enter department/area" required></td>
+                    </tr>
+                    <tr>
+                        <td>Overall cleanliness of the Box Room</td>
+                        <td>
+                            <select name="cleanliness" required>
+                                <option value="">-- Select --</option>
+                                <option value="Good">Good</option>
+                                <option value="Not Good">Not Good</option>
+                            </select>
+                        </td>
+                        <td><input type="text" name="cleanliness_remarks" placeholder="Add remarks"></td>
+                    </tr>
+                    <tr>
+                        <td>Is the floor properly covered with clean cardboard?</td>
+                        <td>
+                            <select name="floor_covering" required>
+                                <option value="">-- Select --</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </td>
+                        <td><input type="text" name="floor_covering_remarks" placeholder="Add remarks"></td>
+                    </tr>
+                    <tr>
+                        <td>Weekly Safety Topic Available?</td>
+                        <td>
+                            <select name="safety_topic" required>
+                                <option value="">-- Select --</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </td>
+                        <td><input type="text" name="safety_topic_remarks" placeholder="Add remarks"></td>
+                    </tr>
+                    <tr>
+                        <td>Do we have chemicals?</td>
+                        <td>
+                            <select name="chemicals" onchange="toggleChecklist(this, 'chemicalsChecklist', 'Yes')" required>
+                                <option value="">-- Select --</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr id="chemicalsChecklist" class="hidden">
+                        <td>Specify Chemicals</td>
+                        <td colspan="2">
+                            <label><input type="checkbox" name="chemical_707"> 707</label>
+                            <label><input type="checkbox" name="chemical_knocker_loose"> Knocker Loose</label>
+                            <label><input type="checkbox" name="chemical_air_lubricant"> Air Lubricant Oil</label>
+                            <label><input type="checkbox" name="chemical_other"> Other</label>
+                            <input type="text" name="chemical_other_details" placeholder="Specify other chemical">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Upload Supporting Pictures</td>
+                        <td colspan="2"><input type="file" name="supporting_pictures" multiple></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div style="text-align: center;">
+                <button type="submit" class="submit-button">Submit Checklist</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
